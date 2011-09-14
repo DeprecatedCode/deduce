@@ -1,0 +1,2 @@
+{ "name" : "deduce",
+  "main" : "./deduce.js" }

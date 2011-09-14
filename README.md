@@ -25,6 +25,9 @@ Deduce is a simple [mutable](http://github.com/NateFerrero/mutable) module for N
         .error( console.error );
 
     deduce.resolve( sounds, 'keys' )
-        .end( function( snd ) {
-            console.log( 'Keys make the noise:', snd ); 
-        } ).error( function(err) { throw err; } );
+        .end(
+            function( snd ) {
+                console.log( 'Keys make the noise:', snd ); 
+            }
+        )
+        .error( function(err) { throw err; } );

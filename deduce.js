@@ -2,7 +2,7 @@
  * Deduce
  * An asynchronous variable resolution engine.
  * 
- * This is a malleable module! Please submit your custom mutations to the Node
+ * This is a mutable module! Please submit your custom mutations to the Node
  * community.
  * 
  * By: Nate Ferrero
@@ -30,7 +30,7 @@
  * For more details, see the README.md file.
  */
  
-// Mutable module!
+// Mutable module
 var $ = require('mutable')(module);
 
 // Mutable Exports
@@ -103,10 +103,10 @@ $.resolve = function resolve(target, context) {
     // Create an event emitter and return it
     context.events = new $.EventEmitter();
     
-    // Extend it with and end listener
+    // Extend it with an end listener
     context.events.end = $.contextEndListenerFunction(context);
     
-    // Extend it with and error listener
+    // Extend it with an error listener
     context.events.error = $.contextErrorListenerFunction(context);
     
     return context.events;

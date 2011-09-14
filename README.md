@@ -2,6 +2,10 @@
 
 Deduce is a simple [mutable](http://github.com/NateFerrero/mutable) module for Node. It follows a specified path into an object chain, asyncronously when possible, eventually reaching a conclusion.
 
+## Installation
+
+    npm install deduce
+
 ## Sample Usage
 
     var deduce = require('deduce').instance();

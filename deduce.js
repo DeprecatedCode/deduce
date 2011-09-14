@@ -116,6 +116,7 @@ $.resolve = function resolve(target, context) {
 $.contextEndListenerFunction = function contextEndListenerFunctionGenerator(context) {
     return function contextEndListener(callback) {
         context.events.on('end', callback);
+        return context.events;
     };
 };
 
@@ -123,6 +124,7 @@ $.contextEndListenerFunction = function contextEndListenerFunctionGenerator(cont
 $.contextErrorListenerFunction = function contextErrorListenerFunctionGenerator(context) {
     return function contextErrorListener(callback) {
         context.events.on('error', callback);
+        return context.events;
     };
 };
 

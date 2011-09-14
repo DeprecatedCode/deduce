@@ -24,7 +24,7 @@
  * deduce.resolve(sample, ['foo', 'bar']).on('end', show);
  * // Console: Baz
  * 
- * deduce.resolve(sample, 'foo/yam').on('end', show);
+ * deduce.resolve(sample, 'foo/yam').end(show).error(console.error);
  * // Console: Hello
  * 
  * For more details, see the README.md file.
@@ -102,7 +102,28 @@ $.resolve = function resolve(target, context) {
     
     // Create an event emitter and return it
     context.events = new $.EventEmitter();
+    
+    // Extend it with and end listener
+    context.events.end = $.contextEndListenerFunction(context);
+    
+    // Extend it with and error listener
+    context.events.error = $.contextErrorListenerFunction(context);
+    
     return context.events;
+};
+
+// End listener
+$.contextEndListenerFunction = function contextEndListenerFunctionGenerator(context) {
+    return function contextEndListener(callback) {
+        context.events.on('end', callback);
+    };
+};
+
+// Error listener
+$.contextErrorListenerFunction = function contextErrorListenerFunctionGenerator(context) {
+    return function contextErrorListener(callback) {
+        context.events.on('error', callback);
+    };
 };
 
 // Context argument function generator
@@ -215,6 +236,6 @@ $.resolveError = function resolveError(err, context) {
         }
     }
     
-    // No error handler
+    // No error handler found
     context.events.emit('error', err);
 };
